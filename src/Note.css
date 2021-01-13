@@ -1,0 +1,19 @@
+.note {
+  border: black solid 1px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  height: 25px;
+  margin:auto 10px;
+}
+
+.date {
+  margin-right: 20px;
+}
