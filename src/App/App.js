@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import {API_ENDPOINT} from '../config'
+import {API_ENDPOINT} from '../Config'
 import Main from '../HomeRoute/Main'
 import FolderPath from '../FolderRoute/FolderPath'
 import NotePath from '../NoteRoute/NotePath'
