@@ -1,90 +1,87 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import API_ENDPOINT from './Config'
-import * as data from './data-file.json'
-import Main from './Main'
-import FolderPath from './FolderPath'
-import NotePath from './NotePath'
-import AddFolder from './AddFolder'
-import AddNote from './AddNote'
-import AppError from './AppError'
+import {API_ENDPOINT} from '../config'
+import Main from '../HomeRoute/Main'
+import FolderPath from '../FolderRoute/FolderPath'
+import NotePath from '../NoteRoute/NotePath'
+import AddFolder from '../Forms/AddFolder'
+import AddNote from '../Forms/AddNote'
+import './App.css'
+
 
 export default class App extends React.Component {
 
-  state={
-    notes:[],
-    folders:[],
-    hasError: false
+  constructor(props) {
+    super(props);
+    this.state={
+      notes:[],
+      folders:[]
+    } 
+  }
+  
+  retrieveFolders() {
+    fetch(`${API_ENDPOINT}/folders`)
+      .then(res => res.json())
+      .then(resJson => {this.setState({folders: resJson})})
   }
 
-
-  componentDidMount() {
-    this.setState({
-      notes: data.notes,
-      folders: data.folders
-    })
+  retrieveNotes() {
+    fetch(`${API_ENDPOINT}/notes`)
+      .then(res => res.json())
+      .then(resJson => {this.setState({notes: resJson})})
   }
 
+  componentDidMount() {  
+    this.retrieveFolders()
+    this.retrieveNotes()
+  }
 
   render() {
-    
     
     function handleFolderSubmition(e) {
       e.preventDefault();
       let name = e.target.name.value;
-      let body = { name: name}
+      let body = {name}
 
-      fetch(`${API_ENDPOINT}/folder`, 
+      fetch(`${API_ENDPOINT}/folders`, 
         {
           method: 'POST',
-          body: body,
+          body: JSON.stringify(body),
           headers: {
             "Content-Type": "application/json"
           }
         }
       )
       .then(res => {
-        if (!res.ok) {
-          throw new Error('something went wrong!')
-        }
         return res.json();
       })
     };
     
-
     function handleNoteSubmition(e) {
       e.preventDefault();
       let name = e.target.name.value;
       let content = e.target.content.value;
-      let folder = e.target.location.value;
+      let folderId = e.target.location.value;
+      let modified = new Date();
 
-      let body = { 
-        name: name, 
-        content: content, 
-        folder: folder
-      }
+      let body = { name, content, folderId, modified }
 
       fetch(`${API_ENDPOINT}/notes`, 
         {
           method: 'POST',
-          body: body,
+          body: JSON.stringify(body),
           headers: {
             "Content-Type": "application/json"
           }
         }
       )
       .then(res => {
-        if (!res.ok) {
-          throw new Error('something went wrong!')
-        }
         return res.json();
       })
-       
     };
 
     return(
       <main>
-        <AppError state={this.state}>
         <Route
           exact path='/'
           component={() => <Main 
@@ -109,14 +106,29 @@ export default class App extends React.Component {
 
         {this.state.folders.map(item => {
           const path = `/folder/${item.id}`
-          return <Route exact path={path} component={() => <FolderPath notes={this.state.notes} folders={this.state.folders} id={item.id} returnPath={path} />} />
+          return <Route 
+          key={item.id} 
+          exact path={path} 
+          component={() => <FolderPath 
+            notes={this.state.notes} 
+            folders={this.state.folders} 
+            id={item.id} 
+            returnPath={path} 
+          />} />
         } )}
 
         {this.state.notes.map(item => {
           const path = `/note/${item.id}`
-          return <Route exact path={path} component={() => <NotePath notes={this.state.notes} folders={this.state.folders} id={item.folderId} note={item.id} />} />
+          return <Route 
+          key={item.id} 
+          exact path={path} 
+          component={() => <NotePath 
+            notes={this.state.notes} 
+            folders={this.state.folders} 
+            id={item.folderId} 
+            note={item.id} 
+          />} />
         } )}
-        </AppError>
       </main>
     )
   }

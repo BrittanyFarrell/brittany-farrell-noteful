@@ -10,7 +10,7 @@ export default class NotePathMain extends React.Component {
         <div className="note" id={note.id}>
           <h2>{note.name}</h2>
           <div className="flex">
-            <p className="date">Date Modified: {note.date}</p>
+            <p className="date">Date Modified: {note.modified}</p>
             <button>Delete</button>
           </div>
         </div>

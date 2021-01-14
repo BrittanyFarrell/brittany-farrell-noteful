@@ -28,7 +28,7 @@ export default class FolderpathSidebar extends React.Component {
         <h2>Folders: </h2>
         {mapped}
         <Link to={'/add-folder'}>
-          <div>Add folder</div>
+          <div className="btn">Add folder</div>
         </Link>
     </div>
     )

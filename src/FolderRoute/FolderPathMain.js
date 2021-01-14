@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import Note from './Note'
+import Note from '../NoteComponent/Note'
 
 export default class FolderPathMain extends React.Component {
   render() {
@@ -17,6 +17,6 @@ export default class FolderPathMain extends React.Component {
         />
       )
     })
-    return <Link to={'/add-note'}><div className="notes"><h2>Notes:</h2>{mapped}<button>Add note</button></div></Link>
+    return <div className="notes"><h2>Notes:</h2>{mapped}<Link to={'/add-note'}><div className="btn">Add note</div></Link></div>
   }
 }

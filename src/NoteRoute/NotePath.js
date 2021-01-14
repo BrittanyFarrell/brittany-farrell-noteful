@@ -1,8 +1,9 @@
 import React from 'react'
-import Header from './Header'
+import Header from '../Header'
 import NotePathSidebar from './NotePathSidebar'
 import NotePathMain from './NotePathMain'
 import PropTypes from 'prop-types'
+import ErrorBoundary from '../ErrorBoundary'
 
 export default class NotePath extends React.Component {
   render() {
@@ -16,18 +17,20 @@ export default class NotePath extends React.Component {
     }
     return (
       <div>
-        <Header />
-        <div className="flex">
-          <NotePathSidebar 
-            folders={this.props.folders}
-            id={this.props.id}
-            returnPath={returnPath}
-          />
-          <NotePathMain 
-            notes={this.props.notes}
-            id={this.props.note}
-          />
-        </div>
+        <ErrorBoundary>
+          <Header />
+          <div key={this.props.note} className="flex">
+            <NotePathSidebar 
+              folders={this.props.folders}
+              id={this.props.id}
+              returnPath={returnPath}
+            />
+            <NotePathMain 
+              notes={this.props.notes}
+              id={this.props.note}
+            />
+          </div>
+        </ErrorBoundary>
       </div>
     ) 
   }
