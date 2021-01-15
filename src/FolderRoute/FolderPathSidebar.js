@@ -1,7 +1,8 @@
 import React from 'react'
 import {Link} from'react-router-dom'
+import PropTypes from 'prop-types'
 
-export default class FolderpathSidebar extends React.Component {
+export default class FolderPathSidebar extends React.Component {
   render() {
     let mapped = this.props.folders.map(item => {
       let path = `/folder/${item.id}`
@@ -33,4 +34,9 @@ export default class FolderpathSidebar extends React.Component {
     </div>
     )
   }
+}
+
+FolderPathSidebar.propTypes = {
+  folder: PropTypes.array.isRequired,
+  id: PropTypes.string
 }

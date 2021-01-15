@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import Note from '../NoteComponent/Note'
+import PropTypes from 'prop-types'
 
 export default class FolderPathMain extends React.Component {
   render() {
@@ -19,4 +20,9 @@ export default class FolderPathMain extends React.Component {
     })
     return <div className="notes"><h2>Notes:</h2>{mapped}<Link to={'/add-note'}><div className="btn">Add note</div></Link></div>
   }
+}
+
+FolderPathMain.propTypes = {
+  notes: PropTypes.array,
+  id: PropTypes.string
 }

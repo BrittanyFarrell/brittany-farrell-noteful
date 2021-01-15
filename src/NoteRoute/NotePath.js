@@ -3,7 +3,6 @@ import Header from '../Header'
 import NotePathSidebar from './NotePathSidebar'
 import NotePathMain from './NotePathMain'
 import PropTypes from 'prop-types'
-import ErrorBoundary from '../ErrorBoundary'
 
 export default class NotePath extends React.Component {
   render() {
@@ -17,7 +16,6 @@ export default class NotePath extends React.Component {
     }
     return (
       <div>
-        <ErrorBoundary>
           <Header />
           <div key={this.props.note} className="flex">
             <NotePathSidebar 
@@ -30,14 +28,14 @@ export default class NotePath extends React.Component {
               id={this.props.note}
             />
           </div>
-        </ErrorBoundary>
       </div>
     ) 
   }
 }
 
 NotePath.propTypes = {
-  note: PropTypes.array,
+  notes: PropTypes.array,
+  note: PropTypes.string,
   folders: PropTypes.array,
   id: PropTypes.string,
   returnPath: PropTypes.string

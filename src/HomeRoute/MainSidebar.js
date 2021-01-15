@@ -28,7 +28,5 @@ export default function MainSidebar(props) {
 }
 
 MainSidebar.propTypes = {
-  folders: PropTypes.array,
-  notes: PropTypes.array
-};
-
+  folders: PropTypes.array
+}

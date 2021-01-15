@@ -21,5 +21,6 @@ export default class NotePathMain extends React.Component {
 }
 
 NotePathMain.prototypes = {
-  notes: PropTypes.array
+  notes: PropTypes.array,
+  id: PropTypes.string
 }

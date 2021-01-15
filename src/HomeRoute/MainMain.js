@@ -21,5 +21,5 @@ export default class MainMain extends React.Component {
 }
 
 MainMain.propTypes = {
-  note: PropTypes.array
+  notes: PropTypes.array
 }

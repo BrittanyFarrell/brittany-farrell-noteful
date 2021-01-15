@@ -2,14 +2,13 @@ import React from 'react'
 import './form.css'
 import Header from '../Header'
 import {Link} from 'react-router-dom'
-import ErrorBoundary from '../ErrorBoundary'
+import PropTypes from 'prop-types'
 
 export default class AddFolder extends React.Component {
   render() {
     
     return (
       <div>
-        <ErrorBoundary>
           <Header />
           <Link to={'/'}>
             <div className="btn">Go Back</div>
@@ -22,8 +21,11 @@ export default class AddFolder extends React.Component {
               <input type="submit" value="submit"/>
             
           </form>
-        </ErrorBoundary>
       </div>
     )
   }
+}
+
+AddFolder.propTypes = {
+  callback: PropTypes.func.isRequired
 }

@@ -4,13 +4,11 @@ import './form.css'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import Header from '../Header'
-import ErrorBoundary from '../ErrorBoundary'
 
 export default class AddFolder extends React.Component {
   render() {
     return (
       <div>
-        <ErrorBoundary>
           <Header />
           <Link to={'/'}>
             <div className="btn">Go Back</div>
@@ -21,7 +19,7 @@ export default class AddFolder extends React.Component {
             <input typeof="text" name="name"  id="name" required/>
     
             <label htmlFor="content">Note Content: </label>
-            <input typeof="text" name="content"  id="content" />
+            <input typeof="text" name="content"  id="content" required />
     
             <label htmlFor="location">Note Location: </label>
             <select name="location"  id="location">
@@ -31,12 +29,12 @@ export default class AddFolder extends React.Component {
               <input type="submit" value="submit"/>
             
           </form>
-        </ErrorBoundary>
       </div>
     )
   }
 }
 
 AddFolder.propTypes = {
-  folders: PropTypes.array
+  folders: PropTypes.array,
+  callback: PropTypes.func.isRequired
 };
