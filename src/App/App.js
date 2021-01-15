@@ -6,6 +6,7 @@ import FolderPath from '../FolderRoute/FolderPath'
 import NotePath from '../NoteRoute/NotePath'
 import AddFolder from '../Forms/AddFolder'
 import AddNote from '../Forms/AddNote'
+import { withRouter } from 'react-router-dom';
 import './App.css'
 import ErrorBoundary from '../ErrorBoundary'
 
