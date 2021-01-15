@@ -8,7 +8,6 @@ import AddFolder from '../Forms/AddFolder'
 import AddNote from '../Forms/AddNote'
 import { withRouter } from 'react-router-dom';
 import './App.css'
-import { render } from '@testing-library/react';
 import ErrorBoundary from '../ErrorBoundary'
 
 
