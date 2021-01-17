@@ -11,9 +11,9 @@ export default class Note extends React.Component {
 
     function convertTime(dateGiven) {
       let month = new Date(dateGiven).getMonth();
-      let day = new Date(dateGiven).getDay();
-      let year = new Date(dateGiven).getYear();
-      return (`${month + 1}/${day}/${year -100}`)
+      let day = new Date(dateGiven).getDate();
+      let year = new Date(dateGiven).getFullYear();
+      return (`${month + 1}/${day}/${year}`)
     }
 
 

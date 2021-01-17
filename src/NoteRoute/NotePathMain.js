@@ -5,12 +5,22 @@ export default class NotePathMain extends React.Component {
   render() {
     let filtered = this.props.notes.filter(item => item.id === this.props.id)
     let note = filtered[0]
+
+    function convertTime(dateGiven) {
+      let month = new Date(dateGiven).getMonth();
+      let day = new Date(dateGiven).getDate();
+      let year = new Date(dateGiven).getFullYear();
+      return (`${month + 1}/${day}/${year}`)
+    }
+
+
+   let modified = convertTime(note.modified)
     return (
       <div>
         <div className="note" id={note.id}>
           <h2>{note.name}</h2>
           <div className="flex">
-            <p className="date">Date Modified: {note.modified}</p>
+            <p className="date">Date Modified: {modified}</p>
             <button>Delete</button>
           </div>
         </div>
