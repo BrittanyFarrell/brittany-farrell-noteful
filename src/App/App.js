@@ -56,8 +56,8 @@ class App extends React.Component {
       this.props.history.push('/')
       return res.json();
     })
-    this.retrieveFolders();
-    this.render();
+    .then(() => this.retrieveFolders())
+    .then(() => this.render())
   };
 
   handleNoteSubmition(e) {
@@ -82,8 +82,8 @@ class App extends React.Component {
       this.props.history.push('/')
       return res.json();
     })
-    this.retrieveNotes();
-    this.render();
+    .then(() => this.retrieveNotes())
+    .then(() => this.render())
   };
 
   render() {
