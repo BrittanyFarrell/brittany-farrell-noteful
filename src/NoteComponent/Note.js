@@ -1,6 +1,5 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import { API_ENDPOINT } from '../Config'
 import './Note.css'
 import PropTypes from 'prop-types'
 import ErrorBoundary from '../ErrorBoundary'
