@@ -2,7 +2,8 @@
   border: black solid 1px;
   margin: 10px;
   padding: 10px;
-  width: 400px;
+  min-width: 300px;
+  max-width: 600px;
 }
 
 .flex {
@@ -13,6 +14,17 @@
 button {
   height: 25px;
   margin:auto 10px;
+}
+
+.content {
+  margin: 10px;
+  padding: 20px;
+  min-width: 300px;
+  max-width: 600px;
+}
+
+.content h3, .content p {
+  margin: 0;
 }
 
 .date {

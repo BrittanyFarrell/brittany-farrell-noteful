@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import { API_ENDPOINT } from '../Config'
 import './Note.css'
 import PropTypes from 'prop-types'
 import ErrorBoundary from '../ErrorBoundary'
@@ -27,7 +28,7 @@ export default class Note extends React.Component {
             </Link>
             <div className="flex">
               <p className="date">Date Modified: {modified}</p>
-              <button>Delete</button>
+              <button >Delete</button>
             </div>
           </div>
         </ErrorBoundary>
@@ -37,7 +38,7 @@ export default class Note extends React.Component {
 }
 
 Note.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.number,
   date: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired
 }

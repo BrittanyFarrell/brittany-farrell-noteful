@@ -27,7 +27,7 @@ export default class FolderPath extends React.Component {
 
 FolderPath.propTypes = {
   folders: PropTypes.array,
-  id: PropTypes.string,
+  id: PropTypes.number,
   notes: PropTypes.array,
   returnPath: PropTypes.string
 }

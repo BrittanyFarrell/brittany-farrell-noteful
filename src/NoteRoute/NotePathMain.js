@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 export default class NotePathMain extends React.Component {
+  
   render() {
     let filtered = this.props.notes.filter(item => item.id === this.props.id)
     let note = filtered[0]
@@ -14,7 +15,7 @@ export default class NotePathMain extends React.Component {
     }
 
 
-   let modified = convertTime(note.modified)
+   let modified = convertTime(note.date_modified)
     return (
       <div>
         <div className="note" id={note.id}>
@@ -24,7 +25,10 @@ export default class NotePathMain extends React.Component {
             <button>Delete</button>
           </div>
         </div>
-        <p className="content">{note.content}</p>
+        <div className="content">
+          <h3>Content: </h3>
+          <p>{note.content}</p>
+        </div>
       </div>
     )
   }
@@ -32,5 +36,5 @@ export default class NotePathMain extends React.Component {
 
 NotePathMain.prototypes = {
   notes: PropTypes.array,
-  id: PropTypes.string
+  id: PropTypes.number
 }

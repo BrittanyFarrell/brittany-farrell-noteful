@@ -9,6 +9,7 @@ import AddNote from '../Forms/AddNote'
 import { withRouter } from 'react-router-dom';
 import './App.css'
 import ErrorBoundary from '../ErrorBoundary'
+import uuid from 'react-uuid'
 
 
 class App extends React.Component {
@@ -24,7 +25,9 @@ class App extends React.Component {
   retrieveFolders() {
     fetch(`${API_ENDPOINT}/folders`)
       .then(res => res.json())
-      .then(resJson => {this.setState({folders: resJson})})
+      .then(resJson => {
+        this.setState({folders: resJson})
+      })
   }
 
   retrieveNotes() {
@@ -64,10 +67,10 @@ class App extends React.Component {
     e.preventDefault();
     let name = e.target.name.value;
     let content = e.target.content.value;
-    let folderId = e.target.location.value;
-    let modified = new Date();
+    let folder_id = e.target.location.value;
+    let date_modified = new Date();
 
-    let body = { name, content, folderId, modified }
+    let body = { name, content, folder_id, date_modified }
 
     fetch(`${API_ENDPOINT}/notes`, 
       {
@@ -115,7 +118,7 @@ class App extends React.Component {
           {this.state.folders.map(item => {
             const path = `/folder/${item.id}`
             return <Route 
-            key={item.id} 
+            key={uuid()} 
             exact path={path} 
             component={() => <FolderPath 
               notes={this.state.notes} 
@@ -128,12 +131,12 @@ class App extends React.Component {
           {this.state.notes.map(item => {
             const path = `/note/${item.id}`
             return <Route 
-            key={item.id} 
+            key={uuid()} 
             exact path={path} 
             component={() => <NotePath 
               notes={this.state.notes} 
               folders={this.state.folders} 
-              id={item.folderId} 
+              id={item.folder_id} 
               note={item.id} 
             />} />
           } )}

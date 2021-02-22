@@ -23,5 +23,5 @@ export default class Folder extends React.Component {
 
 Folder.propTypes = {
   name: PropTypes.string.isRequired,
-  id: PropTypes.string
+  id: PropTypes.number
 };

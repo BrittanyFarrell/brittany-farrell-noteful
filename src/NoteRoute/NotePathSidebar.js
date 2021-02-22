@@ -16,7 +16,7 @@ export default function NotePathSidebar(props){
           Go back
         </p>
       </Link>
-      <h3 className="right-align">{filtered[0].name}</h3>
+      <h2 className="right-align">{filtered[0].name}</h2>
     </div>
   )
   
