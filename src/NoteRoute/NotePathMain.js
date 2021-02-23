@@ -9,14 +9,6 @@ export default class NotePathMain extends React.Component {
     let filtered = this.props.notes.filter(item => item.id === this.props.id)
     let item = filtered[0]
 
-    function convertTime(dateGiven) {
-      let month = new Date(dateGiven).getMonth();
-      let day = new Date(dateGiven).getDate();
-      let year = new Date(dateGiven).getFullYear();
-      return (`${month + 1}/${day}/${year}`)
-    }
-
-   let modified = convertTime(item.date_modified)
     return (
       <div>
         <Note 
