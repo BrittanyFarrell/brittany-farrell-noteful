@@ -18,6 +18,7 @@ export default class FolderPath extends React.Component {
               notes={this.props.notes}
               id={this.props.id}
               returnPath={this.props.returnPath}
+              delete={(e) => this.props.delete(e)}
             />
           </div>
       </div>

@@ -12,7 +12,10 @@ export default class Main extends React.Component {
           <Header />
           <div className="flex">
             <MainSidebar folders={this.props.folders} />
-            <MainMain notes={this.props.notes}/>
+            <MainMain 
+              notes={this.props.notes} 
+              delete={(e) => this.props.delete(e)}
+            />
           </div>
       </div>
     )

@@ -16,6 +16,7 @@ export default class FolderPathMain extends React.Component {
           key={uuid()}
           id={item.id} 
           returnPath={this.props.returnPath}
+          delete={(e) => this.props.delete(e)}
         />
       )
     })

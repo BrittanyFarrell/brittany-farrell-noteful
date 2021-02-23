@@ -1,11 +1,13 @@
 import React from 'react' 
 import PropTypes from 'prop-types'
+import uuid from 'react-uuid'
+import Note from '../NoteComponent/Note'
 
 export default class NotePathMain extends React.Component {
   
   render() {
     let filtered = this.props.notes.filter(item => item.id === this.props.id)
-    let note = filtered[0]
+    let item = filtered[0]
 
     function convertTime(dateGiven) {
       let month = new Date(dateGiven).getMonth();
@@ -14,20 +16,19 @@ export default class NotePathMain extends React.Component {
       return (`${month + 1}/${day}/${year}`)
     }
 
-
-   let modified = convertTime(note.date_modified)
+   let modified = convertTime(item.date_modified)
     return (
       <div>
-        <div className="note" id={note.id}>
-          <h2>{note.name}</h2>
-          <div className="flex">
-            <p className="date">Date Modified: {modified}</p>
-            <button>Delete</button>
-          </div>
-        </div>
+        <Note 
+          name={item.name}
+          key={uuid()}
+          date={item.date_modified}
+          id={item.id} 
+          delete={(e) => this.props.delete(e)}
+        />
         <div className="content">
           <h3>Content: </h3>
-          <p>{note.content}</p>
+          <p>{item.content}</p>
         </div>
       </div>
     )

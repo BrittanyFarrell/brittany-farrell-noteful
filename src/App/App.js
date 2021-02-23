@@ -41,6 +41,27 @@ class App extends React.Component {
     this.retrieveNotes()
   }
 
+  handleDeleteClick(e) {
+    e.preventDefault()
+    const note_id = e.target.id
+
+    console.log('delete function reached')
+    console.log('id', note_id)
+    console.log('path', `${API_ENDPOINT}/notes/${note_id}`)
+
+    fetch(`${API_ENDPOINT}/notes/${note_id}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json'
+      },
+    })
+    .then(res => {
+      this.props.history.push('/')
+    })
+    .then(() => this.retrieveNotes())
+    .then(() => this.render())
+  }
+
   handleFolderSubmition(e) {
     e.preventDefault();
     let name = e.target.name.value;
@@ -96,6 +117,7 @@ class App extends React.Component {
           <Route
             exact path='/'
             component={() => <Main 
+              delete={(e) => this.handleDeleteClick(e)}
               notes={this.state.notes} 
               folders={this.state.folders}
             />}
@@ -125,6 +147,7 @@ class App extends React.Component {
               folders={this.state.folders} 
               id={item.id} 
               returnPath={path} 
+              delete={(e) => this.handleDeleteClick(e)}
             />} />
           } )}
   
@@ -138,6 +161,7 @@ class App extends React.Component {
               folders={this.state.folders} 
               id={item.folder_id} 
               note={item.id} 
+              delete={(e) => this.handleDeleteClick(e)}
             />} />
           } )}
         </main>

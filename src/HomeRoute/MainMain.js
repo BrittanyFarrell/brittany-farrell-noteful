@@ -13,6 +13,7 @@ export default class MainMain extends React.Component {
           key={uuid()}
           date={item.date_modified}
           id={item.id} 
+          delete={(e) => this.props.delete(e)}
         />
       )
     })

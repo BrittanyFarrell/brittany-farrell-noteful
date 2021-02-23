@@ -24,6 +24,7 @@ export default class NotePath extends React.Component {
               returnPath={returnPath}
             />
             <NotePathMain 
+              delete={(e) => this.props.delete(e)}
               notes={this.props.notes}
               id={this.props.note}
             />
@@ -35,8 +36,8 @@ export default class NotePath extends React.Component {
 
 NotePath.propTypes = {
   notes: PropTypes.array,
-  note: PropTypes.string,
+  note: PropTypes.number,
   folders: PropTypes.array,
-  id: PropTypes.string,
+  id: PropTypes.number,
   returnPath: PropTypes.string
 }
