@@ -16,6 +16,8 @@
   left: 0;
   right: 0;
   top: 0;
+  margin: 0;
+  border-radius: 5px;
 }
 
 body {
@@ -26,8 +28,12 @@ body {
 main {
   max-width: 1000px;
   margin: auto;
-  position: relative;
+  position: absolute;
   padding-top: 100px;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .btn, a {
@@ -38,4 +44,9 @@ main {
 .note {
   background-color: rgb(218, 254, 255);
   border-radius: 20px;
+}
+
+.flex {
+  max-width: 700px;
+  margin: auto;
 }
